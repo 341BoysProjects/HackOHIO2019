@@ -17,7 +17,7 @@ Current maintainers:
 
 ## Our Story
 
-We're four roommates who have lived together since the beginning of our college careers in August of 2018. 
+We're four roommates who have lived together since the beginning of our college careers in August of 2018. The name "341 Boys" was given to use because, well, we were in room number 341, and we're all boys (men, rather). So, 341 Boys has been our name, and we're hoping that for this project, coding is the game!
 
 ## License
 
