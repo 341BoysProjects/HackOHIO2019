@@ -8,12 +8,10 @@ Will populate after the beginning of Hackathon.
 
 ## Who We Are
 
-Current maintainers:
+| [Hunter Figgs](https://github.com/hfiggs)  | [Max Giffin](https://github.com/maxg66) | [Evan Horsley](https://github.com/evy0311)  | [Ryan O'Leary](https://github.com/olearyryan08) |
+| ------------- | ------------- | ------------- | ------------- |
+| <img src="README/portraitHunter.jpg" alt="Hunter" width="200"/> | <img src="README/portraitMax.jpg" alt="Max" width="200"/>  | <img src="README/portraitEvan.png" alt="Evan" width="200"/>  | <img src="README/portraitRyan.jpg" alt="Ryan" width="200"/>  |
 
-* [Hunter Figgs](https://github.com/hfiggs)
-* [Max Giffin](https://github.com/maxg66)
-* [Evan Horsley](https://github.com/evy0311)
-* [Ryan O'Leary](https://github.com/olearyryan08)
 
 ## Our Story
 
