@@ -1,5 +1,5 @@
-## Hack OH/IO 2019 Project
-Repository for the Hack OH/IO Hackathon 2019
+## Hack OHI/O 2019 Project
+Repository for the Hack OHI/O Hackathon 2019
 
 
 ## Introduction
