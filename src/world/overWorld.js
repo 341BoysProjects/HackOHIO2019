@@ -20,7 +20,7 @@ function setup() {
 
 function draw() {
   background(255,255,255);
-
+  // image(world, 0, 0);
 
   if (mouseIsPressed) {
     camera.zoom = .5;
@@ -50,6 +50,5 @@ function draw() {
   //the normal drawing coordinates, the frame will be drawn at
   //the absolute 0,0 (try to see what happens if you don't turn it off
   camera.off();
-  image(world, 0, 0);
   
 }
