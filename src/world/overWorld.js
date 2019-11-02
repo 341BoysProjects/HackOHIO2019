@@ -1,11 +1,15 @@
-let width = innerWidth;
-let height = innerHeight;
+let width = innerWidth/2;
+let height = innerHeight/2;
 
 var frame;
 
 var SCENE_W = width*2;
 var SCENE_H = height*2;
 
+
+function preload() {
+  map = 
+}
 
 function setup() {
   createCanvas(width, height);
