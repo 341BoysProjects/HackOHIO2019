@@ -24,6 +24,16 @@ class boundary{
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+        this.isVertical = (x2-x1 == 0);
+        this.sprite;
+
+        if (isVertical) {
+            this.sprite = createSprite(x1, Math.abs(y2-y1) / 2, 5, Math.abs(y2-y1));
+        } else {
+            this.sprite = createSprite(x1, Math.abs(y2-y1) / 2, 5, Math.abs(y2-y1));
+        }
+
+
     }
 
     draw() {
