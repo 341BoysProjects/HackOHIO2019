@@ -12,7 +12,7 @@ function setup() {
 
   nut = createSprite(width/2,height/2,50,50);
 
-  frame = loadImage('Map-overview-min.png');
+  frame = loadImage('/src/world/Map-overview-min.png');
 }
 
 function draw() {
