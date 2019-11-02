@@ -12,11 +12,12 @@ function preload() {
 }
 function setup() {
     createCanvas(width,height);
-
 }
 
 function draw() {
     image(oval,0,0);
+    oval.width = width;
+    oval.height = height;
     ellipse(50,50,50,50);
     console.log('draw');
     image(frame,0,0);
