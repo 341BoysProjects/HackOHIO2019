@@ -8,6 +8,7 @@ let xPos = width/2;
 let yPos = height/2;
 
 function preload() {
+    console.log('Preload');
     oval = loadImage('Oval_Picture.png');
 }
 function setup() {
