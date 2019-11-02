@@ -11,7 +11,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(width/2, height/2);
+  createCanvas(width, height);
 
   nut = createSprite(width/2,height/2,50,50);
   nut.addAnimation('forward','/src/world/nut001.png')
@@ -19,23 +19,29 @@ function setup() {
 }
 
 function draw() {
-  background(world);
+  background(0,0,0);
 
-  nut.velocity.x = (camera.mouseX-nut.position.x)/20;
-  nut.velocity.y = (camera.mouseY-nut.position.y)/20;
+  if (mouseIsPressed) {
+    camera.zoom = .5;
+  } else {
+    camera.zoom = 1;
+  }
+
+  nut.velocity.x = (camera.mouseX-nut.position.x)/100;
+  nut.velocity.y = (camera.mouseY-nut.position.y)/100;
 
   camera.position.x = nut.position.x;
   camera.position.y = nut.position.y;
 
-  //limit the ghost movements
-  if(nut.position.x < 0)
-    nut.position.x = 0;
-  if(nut.position.y < 0)
-    nut.position.y = 0;
-  if(nut.position.x > SCENE_W)
-    nut.position.x = SCENE_W;
-  if(nut.position.y > SCENE_H)
-    nut.position.y = SCENE_H;
+  // //limit the ghost movements
+  // if(nut.position.x < 0)
+  //   nut.position.x = 0;
+  // if(nut.position.y < 0)
+  //   nut.position.y = 0;
+  // if(nut.position.x > SCENE_W)
+  //   nut.position.x = SCENE_W;
+  // if(nut.position.y > SCENE_H)
+  //   nut.position.y = SCENE_H;
 
   drawSprite(nut);
 
