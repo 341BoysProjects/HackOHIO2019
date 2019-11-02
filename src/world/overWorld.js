@@ -32,7 +32,7 @@ function setup() {
 
 function draw() {
   background(255,255,255);
-  // image(world, 0, 0);
+  image(world, width/2-nut.position.x, height/2+nut.position.y);
 
   if (mouseIsPressed) {
     camera.zoom = .5;
