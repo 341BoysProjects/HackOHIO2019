@@ -1,60 +1,66 @@
-var positionX;
-let court;
-var xSpeed;
-var positionY;
-var ySpeed;
-var h = 477;
-var w = 1000;
-var score = 0;
+//pong clone
+//mouse to control both paddles
+var court;
+var paddleA, paddleB, ball, wallTop, wallBottom;
+var MAX_SPEED = 10;
 
-function preload() {
-  // preload() runs once
+function setup() {
   court = loadImage('court.jpg');
+  createCanvas();
+  //frameRate(6);
+
+  paddleA = createSprite(30, height/2, 10, 100);
+  paddleA.immovable = true;
+
+  paddleB = createSprite(width-28, height/2, 10, 100);
+  paddleB.immovable = true;
+
+  wallTop = createSprite(width/2, -30/2, width, 30);
+  wallTop.immovable = true;
+
+  wallBottom = createSprite(width/2, height+30/2, width, 30);
+  wallBottom.immovable = true;
+
+  ball = createSprite(width/2, height/2, 10, 10);
+  ball.maxSpeed = MAX_SPEED;
+
+  paddleA.shapeColor = paddleB.shapeColor =ball.shapeColor = color(255, 255, 255);
+
+  ball.setSpeed(MAX_SPEED, -180);
 }
 
-function setup() { 
-  
-  positionX = random(w);
-    positionY = random(h);
-    createCanvas(1000, 477);
-  xSpeed = 2;
-	ySpeed = 3;
-} 
+function draw() {
+  background(0);
 
-function draw() { 
-  background(court);
-  
-  // When the ball passes either side of the canvas, TURNAROUND
-  if(positionX > width || positionX < 0) { 
-    xSpeed = xSpeed * -1; 
-  }
-    
-  if(positionY < 0) { 
-    ySpeed = ySpeed * -1; 
+  paddleA.position.y = constrain(mouseY, paddleA.height/2, height-paddleA.height/2);
+  paddleB.position.y = constrain(mouseY, paddleA.height/2, height-paddleA.height/2);
+
+  ball.bounce(wallTop);
+  ball.bounce(wallBottom);
+
+  var swing;
+  if(ball.bounce(paddleA)) {
+    swing = (ball.position.y-paddleA.position.y)/3;
+    ball.setSpeed(MAX_SPEED, ball.getDirection()+swing);
   }
 
-  if((positionY>(h-35)&&positionY<h-25)&&(positionX>mouseX&&positionX<mouseX+60)){
-    ySpeed = ySpeed * -1.15;
-    xSpeed = xSpeed*1.15;
-    score = score+1;
-
+  if(ball.bounce(paddleB)) {
+    swing = (ball.position.y-paddleB.position.y)/3;
+    ball.setSpeed(MAX_SPEED, ball.getDirection()-swing);
   }
 
-  if((positionY<h&&positionY>h-32)&&((positionX>mouseX&&positionX<mouseX+2)||positionX>mouseX+58&&positionX<mouseX+60)){
-    xSpeed = xSpeed * -1; 
-
+  if(ball.position.x<0) {
+    ball.position.x = width/2;
+    ball.position.y = height/2;
+    ball.setSpeed(MAX_SPEED, 0);
   }
 
-  // if(ySpeed>0&&(positionY<h-15&&positionY>h-100)){
-  //   background('green');
-  // }
+  if(ball.position.x>width) {
+    ball.position.x = width/2;
+    ball.position.y = height/2;
+    ball.setSpeed(MAX_SPEED, 180);
+  }
 
-  // if(positionY>h){
-  //   background('red');
-  // }
- positionX = positionX + xSpeed;  
- positionY = positionY - ySpeed;
-  ellipse(positionX, positionY, 10, 10);
-  rect(0,mouseY,30,60);
-  // text(score.toString(10),mouseX+27,h-25,60,30);
+  drawSprites();
+
 }
