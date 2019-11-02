@@ -14,7 +14,16 @@ function setup() {
   createCanvas(width, height);
 
   nut = createSprite(width/2,height/2,50,50);
-  nut.addAnimation('forward','/src/world/nut001.png')
+  nut.addAnimation('forward','/src/world/nut001.png');
+
+  for(var i=0; i<80; i++)
+  {
+    //create a sprite and add the 3 animations
+    var rock = createSprite(random(-width, SCENE_W+width), random(-height, SCENE_H+height));
+    //cycles through rocks 0 1 2
+    rock.addAnimation('normal', '/src/world/nut001.png');
+    bg.add(rock);
+  }
 
 }
 
@@ -34,15 +43,15 @@ function draw() {
   camera.position.x = nut.position.x;
   camera.position.y = nut.position.y;
 
-  // //limit the ghost movements
-  // if(nut.position.x < 0)
-  //   nut.position.x = 0;
-  // if(nut.position.y < 0)
-  //   nut.position.y = 0;
-  // if(nut.position.x > SCENE_W)
-  //   nut.position.x = SCENE_W;
-  // if(nut.position.y > SCENE_H)
-  //   nut.position.y = SCENE_H;
+  //limit the ghost movements
+  if(nut.position.x < 0)
+    nut.position.x = 0;
+  if(nut.position.y < 0)
+    nut.position.y = 0;
+  if(nut.position.x > SCENE_W)
+    nut.position.x = SCENE_W;
+  if(nut.position.y > SCENE_H)
+    nut.position.y = SCENE_H;
 
   drawSprite(nut);
 
