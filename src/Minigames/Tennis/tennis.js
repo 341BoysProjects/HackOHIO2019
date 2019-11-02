@@ -9,15 +9,14 @@ var score = 0;
 
 function preload() {
   // preload() runs once
-  court = loadImage('court.JPG');
-  court.resize(w, h);
+  court = loadImage('court.jpg');
 }
 
 function setup() { 
   
   positionX = random(w);
     positionY = random(h);
-    createCanvas(350, 167);
+    createCanvas(1000, 477);
   xSpeed = 2;
 	ySpeed = 3;
 } 
