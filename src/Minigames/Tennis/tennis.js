@@ -10,7 +10,6 @@ var score = 0;
 function preload() {
   // preload() runs once
   court = loadImage('court.jpg');
-  court.resize(1000, 477);
 }
 
 function setup() { 
