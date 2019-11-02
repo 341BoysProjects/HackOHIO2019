@@ -13,7 +13,7 @@ var SCENE_H = height*2;
 function setup() {
   createCanvas(width, height);
 
-  nut = createSprite(width/2,height/2,50,50);
+  nut = createSprite(width/2,height/2,200,200);
   nut.addAnimation('forward','/src/world/nut001.png');
 
 
