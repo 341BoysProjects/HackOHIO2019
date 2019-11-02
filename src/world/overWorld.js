@@ -6,17 +6,20 @@ var frame;
 var SCENE_W = width*2;
 var SCENE_H = height*2;
 
+function preload() {
+  map = loadImage('/src/world/Map-overview-min.png')
+}
+
 function setup() {
-  createCanvas(width, height);
+  createCanvas();
 
   nut = createSprite(width/2,height/2,50,50);
   nut.addAnimation('forward','/src/world/nut001.png')
 
-  frame = loadImage('/src/world/Map-overview-min.png');
 }
 
 function draw() {
-  background(frame);
+  background(map);
 
   nut.velocity.x = (camera.mouseX-nut.position.x)/20;
   nut.velocity.y = (camera.mouseY-nut.position.y)/20;
