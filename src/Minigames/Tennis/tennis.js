@@ -1,15 +1,19 @@
 //pong clone
 //mouse to control both paddles
 var court;
+var buckyBoy;
+
 var paddleA, paddleB, ball, wallTop, wallBottom;
 var MAX_SPEED = 10;
 
 function setup() {
   court = loadImage('court.jpg');
+  buckyBoy = loadImage('nutBoy001_64.png');
   createCanvas(1000,477);
   //frameRate(6);
 
-  paddleA = createSprite(30, height/2, 10, 100);
+  paddleA = createSprite(30, height/2, 64, 64);
+  paddleA.addImage(buckyBoy);
   paddleA.immovable = true;
 
   paddleB = createSprite(width-28, height/2, 10, 100);
@@ -33,7 +37,7 @@ function draw() {
   background(court);
 
   paddleA.position.y = constrain(mouseY, paddleA.height/2, height-paddleA.height/2);
-  paddleB.position.y = constrain(mouseY, paddleA.height/2, height-paddleA.height/2);
+  paddleB.position.y = constrain(ball.position.y, paddleA.height/2, height-paddleA.height/2);
 
   ball.bounce(wallTop);
   ball.bounce(wallBottom);
