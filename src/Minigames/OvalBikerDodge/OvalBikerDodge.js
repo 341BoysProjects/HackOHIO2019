@@ -8,7 +8,7 @@ let x = width/2;
 let y = height/2;
 
 function preload() {
-    oval = image('./Oval_Picture.png')
+    oval = loadImage('Oval_Picture.png')
 }
 function setup() {
     createCanvas(width,height);
