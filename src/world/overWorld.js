@@ -6,9 +6,9 @@ var frame;
 var SCENE_W = width*2;
 var SCENE_H = height*2;
 
-function preload() {
-  world = loadImage('/src/world/Map-overview-min.png')
-}
+// function preload() {
+//   world = loadImage('/src/world/Map-overview-min.png')
+// }
 
 function setup() {
   createCanvas(width, height);
@@ -32,7 +32,7 @@ function setup() {
 
 function draw() {
   background(255,255,255);
-  image(world, width/2-nut.position.x, height/2+nut.position.y);
+  // image(world, width/2-nut.position.x, height/2+nut.position.y);
 
   if (mouseIsPressed) {
     camera.zoom = .5;
