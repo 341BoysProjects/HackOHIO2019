@@ -4,14 +4,12 @@ let height = innerHeight;
 let SCENE_W = 1600;
 let SCENE_H = 800;
 let oval;
-let xPos = width/2;
-let yPos = height/2;
+let nut;
 
 function preload() {
     console.log('Preload');
     oval = loadImage('Oval_Picture.png');
-    nut = createSprite(width/2,height/2,50,50);
-    nut.addAnimation('forward','nut.png');
+    nut - loadAnimation('nut001.png','nut003.png','nut003.png');
 }
 function setup() {
     createCanvas(width,height);
@@ -37,7 +35,7 @@ function draw() {
     if(nut.position.y > SCENE_H)
       nut.position.y = SCENE_H;
   
-    drawSprite(nut);
+    annimation(nut,100,100);
   
     //I can turn on and off the camera at any point to restore
     //the normal drawing coordinates, the frame will be drawn at
