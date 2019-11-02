@@ -1,6 +1,7 @@
 let width = innerWidth/2;
 let height = innerHeight/2;
 let boundaries = [];
+let boundaryWidth = 5;
 
 function setup() {
     createCanvas(width, height);
@@ -27,17 +28,19 @@ class boundary{
         this.isVertical = (x2-x1 == 0);
         this.sprite;
 
-        if (isVertical) {
-            this.sprite = createSprite(x1, Math.abs(y2-y1) / 2, 5, Math.abs(y2-y1));
+        if (this.isVertical) {
+            this.sprite = createSprite(x1, Math.abs(y2-y1) / 2, boundaryWidth, Math.abs(y2-y1));
         } else {
-            this.sprite = createSprite(x1, Math.abs(y2-y1) / 2, 5, Math.abs(y2-y1));
+            this.sprite = createSprite(Math.abs(x2-x1) / 2, y1, Math.abs(x2-x1), boundaryWidth);
         }
 
 
     }
 
     draw() {
-        line(this.x1, this.y1, this.x2, this.y2);
+        //line(this.x1, this.y1, this.x2, this.y2);
+        //this.sprite.visible = false;
+        drawSprite(this.sprite);
     }
 
 }
