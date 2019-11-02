@@ -3,8 +3,8 @@ let height = innerHeight;
 
 var frame;
 
-var SCENE_W = 6179;
-var SCENE_H = 7997;
+var SCENE_W = width*2;
+var SCENE_H = height*2;
 
 
 function setup() {
