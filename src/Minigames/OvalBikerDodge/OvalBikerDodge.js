@@ -4,8 +4,8 @@ let height = innerHeight;
 let SCENE_W = 1600;
 let SCENE_H = 800;
 let oval;
-x = width/2;
-y = height/2;
+let x = width/2;
+let y = height/2;
 
 function preload() {
     oval = image('./Oval_Picture.png')
