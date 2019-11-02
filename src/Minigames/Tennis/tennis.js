@@ -16,7 +16,7 @@ function setup() {
   
   positionX = random(w);
     positionY = random(h);
-    createCanvas(w, h);
+    createCanvas(350, 167);
   xSpeed = 2;
 	ySpeed = 3;
 } 
