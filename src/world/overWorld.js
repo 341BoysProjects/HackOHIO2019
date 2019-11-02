@@ -17,7 +17,7 @@ function setup() {
 }
 
 function draw() {
-  background(255, 255, 255);
+  background(frame);
 
   nut.velocity.x = (camera.mouseX-nut.position.x)/20;
   nut.velocity.y = (camera.mouseY-nut.position.y)/20;
