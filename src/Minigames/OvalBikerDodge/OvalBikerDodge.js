@@ -18,6 +18,6 @@ function setup() {
 function draw() {
     background(oval);
     ellipse(x,y,50,50);
-    x=+1;
+    x+=1;
     y+=1;
 }
