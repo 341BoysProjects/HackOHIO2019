@@ -1,5 +1,5 @@
-let width = innerWidth/2;
-let height = innerHeight/2;
+let width = innerWidth;
+let height = innerHeight;
 
 var frame;
 
