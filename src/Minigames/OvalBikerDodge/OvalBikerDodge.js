@@ -11,7 +11,7 @@ function preload() {
     oval = loadImage('Oval_Picture.png')
 }
 function setup() {
-    createCanvas();
+    createCanvas(width,height);
 }
 
 function draw() {
