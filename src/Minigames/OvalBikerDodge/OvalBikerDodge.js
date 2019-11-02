@@ -8,10 +8,11 @@ let xPos = width/2;
 let yPos = height/2;
 
 function preload() {
-    oval = loadImage('Oval_Picture.png')
+    oval = loadImage('Oval_Picture.png');
 }
 function setup() {
     createCanvas(width,height);
+    console.log('1');
 }
 
 function draw() {
