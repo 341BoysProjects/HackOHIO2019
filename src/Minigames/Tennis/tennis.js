@@ -22,7 +22,7 @@ function setup() {
 } 
 
 function draw() { 
-  background('court');
+  background(court);
   
 //   // When the ball passes either side of the canvas, TURNAROUND
 //   if(positionX > width || positionX < 0) { 
