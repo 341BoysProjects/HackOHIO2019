@@ -12,9 +12,12 @@ function preload() {
 }
 function setup() {
     createCanvas(width,height);
-    background(oval);
+
 }
 
 function draw() {
-    ellipse(50,50,50,50);
+    background(oval);
+    ellipse(xPos,yPos,50,50);
+    x=+1;
+    y+=1;
 }
