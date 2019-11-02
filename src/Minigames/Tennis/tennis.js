@@ -10,8 +10,8 @@ function setup() {
   
   // positionX = random(w);
   //   positionY = random(h);
-  court = loadImage('court.JPG');
-    createCanvas(350, 167);
+  court = loadImage('../court.JPG');
+  createCanvas(350, 167);
   // xSpeed = 2;
 	// ySpeed = 3;
 } 
