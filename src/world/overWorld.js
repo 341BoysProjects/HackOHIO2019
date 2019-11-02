@@ -19,7 +19,8 @@ function setup() {
 }
 
 function draw() {
-  background(0,0,0);
+  background(255,255,255);
+  image(world, 0, 0);
 
   if (mouseIsPressed) {
     camera.zoom = .5;
