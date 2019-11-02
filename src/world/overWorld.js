@@ -18,11 +18,11 @@ function setup() {
 function draw() {
   background(255, 255, 255);
 
-  nut.velocity.x = (camera.mouseX-ghost.position.x)/20;
-  nut.velocity.y = (camera.mouseY-ghost.position.y)/20;
+  nut.velocity.x = (camera.mouseX-nut.position.x)/20;
+  nut.velocity.y = (camera.mouseY-nut.position.y)/20;
 
-  camera.position.x = ghost.position.x;
-  camera.position.y = ghost.position.y;
+  camera.position.x = nut.position.x;
+  camera.position.y = nut.position.y;
 
   //limit the ghost movements
   if(nut.position.x < 0)
