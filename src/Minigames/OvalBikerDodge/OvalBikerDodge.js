@@ -8,10 +8,14 @@ let xPos = width/2;
 let yPos = height/2;
 
 function preload() {
-    oval = loadImage('Oval_Picture.png')
+    console.log('Preload');
+    oval = loadImage('Oval_Picture.png');
+    nut = createSprite(width/2,height/2,50,50);
+    nut.addAnimation('forward','nut.png')
 }
 function setup() {
-    createCanvas();
+    createCanvas(width,height);
+    console.log('1');
 }
 
 function draw() {
