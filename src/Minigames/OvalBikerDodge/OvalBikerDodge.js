@@ -1,8 +1,6 @@
 let width = innerWidth;
 let height = innerHeight;
 
-
-
 let SCENE_W = 1600;
 let SCENE_H = 800;
 let oval;
@@ -19,6 +17,4 @@ function draw() {
     oval.width = width;
     oval.height = height;
     ellipse(50,50,50,50);
-    console.log('draw');
-    image(frame,0,0);
 }
