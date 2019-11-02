@@ -30,7 +30,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(court);
 
   paddleA.position.y = constrain(mouseY, paddleA.height/2, height-paddleA.height/2);
   paddleB.position.y = constrain(mouseY, paddleA.height/2, height-paddleA.height/2);
