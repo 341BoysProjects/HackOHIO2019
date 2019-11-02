@@ -11,7 +11,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas();
+  createCanvas(width/2, height/2);
 
   nut = createSprite(width/2,height/2,50,50);
   nut.addAnimation('forward','/src/world/nut001.png')
