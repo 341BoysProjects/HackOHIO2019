@@ -17,7 +17,7 @@ function setup() {
 }
 
 function draw() {
-  background(255, 255, 255);
+  background(frame);
 
   nut.velocity.x = (camera.mouseX-nut.position.x)/20;
   nut.velocity.y = (camera.mouseY-nut.position.y)/20;
@@ -41,5 +41,5 @@ function draw() {
   //the normal drawing coordinates, the frame will be drawn at
   //the absolute 0,0 (try to see what happens if you don't turn it off
   camera.off();
-  image(frame, 0, 0);
+  
 }
