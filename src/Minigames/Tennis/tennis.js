@@ -14,11 +14,20 @@ function preload() {
 
 function setup() { 
   
+<<<<<<< HEAD
   positionX = random(w);
     positionY = random(h);
     createCanvas(w, h);
   xSpeed = 2;
 	ySpeed = 3;
+=======
+  // positionX = random(w);
+  //   positionY = random(h);
+  court = loadImage('court.JPG');
+  createCanvas(350, 167);
+  // xSpeed = 2;
+	// ySpeed = 3;
+>>>>>>> 67f20d835a32c7f7282d11c2ed07428691f3393e
 } 
 
 function draw() { 
