@@ -7,7 +7,7 @@ var SCENE_W = width*2;
 var SCENE_H = height*2;
 
 function preload() {
-  map = loadImage('/src/world/Map-overview-min.png')
+  world = loadImage('/src/world/Map-overview-min.png')
 }
 
 function setup() {
@@ -19,7 +19,7 @@ function setup() {
 }
 
 function draw() {
-  background(map);
+  background(world);
 
   nut.velocity.x = (camera.mouseX-nut.position.x)/20;
   nut.velocity.y = (camera.mouseY-nut.position.y)/20;
