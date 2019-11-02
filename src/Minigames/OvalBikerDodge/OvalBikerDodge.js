@@ -4,8 +4,8 @@ let height = innerHeight;
 let SCENE_W = 1600;
 let SCENE_H = 800;
 let oval;
-xPos = width/2;
-yPos = height/2;
+x = width/2;
+y = height/2;
 
 function preload() {
     oval = image('./Oval_Picture.png')
@@ -17,7 +17,7 @@ function setup() {
 
 function draw() {
     background(oval);
-    ellipse(xPos,yPos,50,50);
+    ellipse(x,y,50,50);
     x=+1;
     y+=1;
 }
