@@ -6,7 +6,7 @@ var MAX_SPEED = 10;
 
 function setup() {
   court = loadImage('court.jpg');
-  createCanvas();
+  createCanvas(1000,477);
   //frameRate(6);
 
   paddleA = createSprite(30, height/2, 10, 100);
