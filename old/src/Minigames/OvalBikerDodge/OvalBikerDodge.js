@@ -4,14 +4,13 @@ let height = innerHeight;
 let SCENE_W = 1600;
 let SCENE_H = 800;
 let oval;
-let xPos = width/2;
-let yPos = height/2;
+let nut = createSprite(100,100,50,50);
 
 function preload() {
     console.log('Preload');
     oval = loadImage('Oval_Picture.png');
-    nut = createSprite(width/2,height/2,50,50);
-    nut.addAnimation('forward','nut.png');
+    var myAnnimation = nut.addAnimation('nut001.png','nut003.png','nut003.png');
+    myAnimation.offY = 18;
 }
 function setup() {
     createCanvas(width,height);
