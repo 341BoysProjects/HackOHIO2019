@@ -3,8 +3,8 @@ let court;
 var xSpeed;
 var positionY;
 var ySpeed;
-var h = window.innerHeight;
-var w = window.innerWidth;
+var h = 477;
+var w = 1000;
 var score = 0;
 
 function preload() {
