@@ -16,6 +16,9 @@ function setup() {
   nut = createSprite(width/2,height/2,50,50);
   nut.addAnimation('forward','/src/world/nut001.png');
 
+
+  bg = new Group();
+
   for(var i=0; i<80; i++)
   {
     //create a sprite and add the 3 animations
@@ -54,6 +57,7 @@ function draw() {
     nut.position.y = SCENE_H;
 
   drawSprite(nut);
+  drawSprites(bg);
 
   //I can turn on and off the camera at any point to restore
   //the normal drawing coordinates, the frame will be drawn at
