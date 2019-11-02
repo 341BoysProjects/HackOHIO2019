@@ -6,11 +6,6 @@ var frame;
 var SCENE_W = width*2;
 var SCENE_H = height*2;
 
-
-function preload() {
-  map = 
-}
-
 function setup() {
   createCanvas(width, height);
 
