@@ -11,6 +11,7 @@ function setup() {
   createCanvas(width, height);
 
   nut = createSprite(width/2,height/2,50,50);
+  nut.addAnimation('forward','/src/world/nut001.png')
 
   frame = loadImage('/src/world/Map-overview-min.png');
 }
