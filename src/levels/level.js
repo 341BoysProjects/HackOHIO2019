@@ -30,6 +30,9 @@ let bullets;
 let enemies = [];
 let eBullets;
 
+//Sound setup
+let loseSound;
+
 function readTextFile(file) {
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
@@ -72,11 +75,15 @@ function setup() {
     createCanvas(width, height);
     background(255);
     
+    //Level Information
     readTextFile("src/levels/data/level1.json");
 
     booleanizeObject(levelJson);     
     pX = levelJson.level[0].player.location.x;
     pY = levelJson.level[0].player.location.y; 
+
+    //Sound Data
+    loseSong = loadSound('/src/assets/sounds/270329__littlerobotsoundfactory__jingle-lose-00.wav');
 
     //Outside lines
     boundaries[0] = new boundary(0, 0, width, 0);
@@ -288,6 +295,8 @@ class enemy {
                 eBullets.add(eBullet);
             }
             this.time++;
+        } else {
+            loseSound.play();
         }
     }
 
