@@ -6,6 +6,8 @@ let height = innerHeight/1.3;
 let levelJson;
 let loots = [];
 let lootImage;
+let currentLevel;
+let exit;
 
 //boundary setup
 let boundaries = [];
@@ -106,11 +108,23 @@ function preload() {
 
 function setup() {
     createCanvas(width, height);
-    
-    //Level Information
-    readTextFile("src/levels/data/level1.json");
 
-    booleanizeObject(levelJson);     
+    currentLevel = getItem('currentLevel');
+    if (currentLevel === null) {
+        currentLevel = '1';
+    }
+    readTextFile("src/levels/data/level" + currentLevel + ".json");
+    nextLevel();
+}
+
+function nextLevel() {
+    if (!currentLevel === null) {
+        // currentLevel += 1;
+        readTextFile("src/levels/data/level" + currentLevel + ".json");
+    }
+
+
+    // booleanizeObject(levelJson);     
     pX = levelJson.level[0].player.location.x;
     pY = levelJson.level[0].player.location.y; 
 
@@ -147,6 +161,9 @@ function setup() {
         loots[i] = new loot(levelJson.level[0].loot["loot" + (i+1).toString()].x, levelJson.level[0].loot["loot" + (i+1).toString()].y, lootImage);
         loots[i].sprite.addImage(lootImage);
     }
+
+    
+    
 
     //Bullets
     bullets = new Group();
@@ -196,15 +213,16 @@ function draw() {
     pAngle = atan2(mouseY - player.position.y, mouseX - player.position.x);
     player.rotation = pAngle * 180 / Math.PI;
 
-    if (player.velocity.y != 0 || player.velocity.x != 0) {
-        player.changeAnimation('walk');
-    } else {
-        player.changeAnimation('stand');
-    }
+    
 
     drawSprite(player);
     drawSprites(bullets);
     drawSprites(eBullets);
+
+    if (enemies.length == 0) {
+        currentLevel += 1;
+        nextLevel();
+    }
 }
 
 function mouseClicked() {
@@ -217,17 +235,23 @@ function mouseClicked() {
 function move() {
     if (keyIsDown(87)) { //W
         player.velocity.y = -1 * pSpeed;
+        player.changeAnimation('walk');
     } else if (keyIsDown(83)) { //S
         player.velocity.y = pSpeed;
+        player.changeAnimation('walk');
     } else {
         player.velocity.y = 0;
+        player.changeAnimation('stand');
     }
     if (keyIsDown(65)) { //A
         player.velocity.x = -1 * pSpeed;
+        player.changeAnimation('walk');
     } else if (keyIsDown(68)) { //D
         player.velocity.x = pSpeed;
+        player.changeAnimation('walk');
     } else {
         player.velocity.x = 0;
+        player.changeAnimation('stand');
     }    
 }
 
