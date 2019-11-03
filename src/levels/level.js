@@ -102,6 +102,7 @@ function setup() {
 
     //Player
     player = createSprite(pX, pY, pSize, pSize);
+    player.debug = true;
     player.addAnimation('walk', player_walk);
     player.addAnimation('stand', player_stand);
 
