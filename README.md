@@ -4,7 +4,7 @@ Repository for the Hack OHI/O Hackathon 2019
 
 ## Introduction
 
-Will populate after the beginning of Hackathon.
+Our project was originally a game related to Ohio State. We tried for around 6 hours to get our initial idea working and then scrapped it. We then went with a much simpler game, but unfortunetely still did not finish in time. This was our first hackathon as a team, and for each of us individually too. We all had a lot of fun and gained a lot of valuable knowledge during this undertaking. 
 
 ## Who We Are
 

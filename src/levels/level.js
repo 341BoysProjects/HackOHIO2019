@@ -88,13 +88,13 @@ function booleanizeObject(obj) {
             lvalue.slice(5,lvalue.length()+1);
             
         }
-    //     if (lvalue.includes("width")) {
-    //       obj[key] = width / 2;
-    //     } else if (lvalue.includes("height")) {
-    //       obj[key] = height;
-    //     }
-    //   } else if (typeof value === 'object') {
-    //     booleanizeObject(obj[key]);
+        if (lvalue.includes("width")) {
+          obj[key] = width / 2;
+        } else if (lvalue.includes("height")) {
+          obj[key] = height;
+        }
+      } else if (typeof value === 'object') {
+        booleanizeObject(obj[key]);
       }
     });
 }
