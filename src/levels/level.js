@@ -83,7 +83,7 @@ function setup() {
     pY = levelJson.level[0].player.location.y; 
 
     //Sound Data
-    loseSong = loadSound('/src/assets/sounds/270329__littlerobotsoundfactory__jingle-lose-00.wav');
+    loseSong = loadSound('src/assets/sounds/270329__littlerobotsoundfactory__jingle-lose-00.wav');
 
     //Outside lines
     boundaries[0] = new boundary(0, 0, width, 0);
