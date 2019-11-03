@@ -4,7 +4,7 @@ let height = innerHeight/1.3;
 
 //Level Setup
 let levelJson;
-let loots;
+let loots = [];
 
 //boundary setup
 let boundaries = [];
@@ -86,18 +86,14 @@ function setup() {
         enemies[i] = new enemy(levelJson.level[0].enemies.x[(i).toString()], levelJson.level[0].enemies.y[(i).toString()], levelJson.level[0].enemies.difficulty[(i).toString()]);
     }
 
-        //Loot
-        loot[0] = new loot(200, 200, "img");
-        loot[1] = new loot(500, 500, "img");
-        loot[2] = new loot(600, 600, "img");
+    //Loot
+    for (i = 0; i < Object.keys(levelJson.level[0].loot).length; i++) {
+        loots[i] = new loot(levelJson.level[0].loot["loot" + (i+1).toString()].x, levelJson.level[0].loot["loot" + (i+1).toString()].y, levelJson.level[0].loot["loot" + (i+1).toString()].image);
+    }
 
     //Bullets
     bullets = new Group();
     eBullets = new Group();
-    loots = new Group();
-
-
-
 }
 
 function draw() {
@@ -125,8 +121,7 @@ function draw() {
     //Draw loots
     for (i = 0; i < loots.length; i++) {
         player.collide(loots[i].sprite);
-        loots[i].sprite.debug = true;
-        loots[i].sprite.shapeColor = color(0);
+        loots[i].sprite.shapeColor = color(100, 100, 100);
         loots[i].draw();
     }
 
@@ -141,7 +136,6 @@ function draw() {
     drawSprite(player);
     drawSprites(bullets);
     drawSprites(eBullets);
-    drawSprites(loots);
 }
 
 function mouseClicked() {
@@ -282,8 +276,8 @@ class loot {
         // loots.add(loot);
     }
 
-    //Event for when player captures the loot
-    capture() {
+    // //Event for when player captures the loot
+    // capture() {
 
-    }
+    // }
 }
