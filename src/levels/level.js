@@ -19,6 +19,18 @@ let pSpeed = 2;
 let pAngle = 0.0;
 let pSize = 35;
 let pHealth = 100;
+let pSpriteSheet;
+let pWalk;
+let pFrames = [
+    {'name':'player_walk01', 'frame':{'x':0, 'y': 0, 'width': 70, 'height': 94}},
+    {'name':'player_walk02', 'frame':{'x':71, 'y': 0, 'width': 70, 'height': 94}},
+    {'name':'player_walk03', 'frame':{'x':142, 'y': 0, 'width': 70, 'height': 94}},
+    {'name':'player_walk04', 'frame':{'x':0, 'y': 95, 'width': 70, 'height': 94}},
+    {'name':'player_walk05', 'frame':{'x':71, 'y': 95, 'width': 70, 'height': 94}},
+    {'name':'player_walk06', 'frame':{'x':142, 'y': 95, 'width': 70, 'height': 94}},
+    {'name':'player_walk07', 'frame':{'x':213, 'y': 0, 'width': 70, 'height': 94}},
+    {'name':'player_walk08', 'frame':{'x':284, 'y': 0, 'width': 70, 'height': 94}}
+];
 
 //Bullets
 let bullets;
@@ -74,13 +86,17 @@ function setup() {
     boundaries[2] = new boundary(width, height, 0, height);
     boundaries[3] = new boundary(0, height, 0, 0);
 
-    // //Inside lines 
+    //Inside lines 
     for (i = 0; i < Object.keys(levelJson.level[0].boundaries.x1).length; i++) {
         boundaries[i+4] = new boundary(levelJson.level[0].boundaries.x1[(i).toString()], levelJson.level[0].boundaries.y1[(i).toString()], levelJson.level[0].boundaries.x2[(i).toString()], levelJson.level[0].boundaries.y2[(i).toString()]);
     }
 
     //Player
+    pSpriteSheet = loadSpriteSheet('src/assets/characters/Player/walkingBanana.png', pFrames);
+    pWalk = loadAnimation(pSpriteSheet);
     player = createSprite(pX, pY, pSize, pSize);
+    player.addAnimation('walk', pWalk);
+
 
     //Enemies
     for (i = 0; i < Object.keys(levelJson.level[0].enemies.x).length; i++) {
