@@ -28,8 +28,8 @@ let pFrames = [
     {'name':'player_walk04', 'frame':{'x':0, 'y': 151, 'width': 150, 'height': 150}},
     {'name':'player_walk05', 'frame':{'x':151, 'y': 151, 'width': 150, 'height': 150}},
     {'name':'player_walk06', 'frame':{'x':302, 'y': 151, 'width': 150, 'height': 150}},
-    {'name':'player_walk07', 'frame':{'x':453, 'y': 0, 'width': 150, 'height': 150}},
-    {'name':'player_walk08', 'frame':{'x':151, 'y': 0, 'width': 150, 'height': 150}}
+    {'name':'player_walk07', 'frame':{'x':0, 'y': 300, 'width': 150, 'height': 150}},
+    {'name':'player_walk08', 'frame':{'x':151, 'y': 300, 'width': 150, 'height': 150}}
 ];
 
 //Bullets
