@@ -7,6 +7,7 @@ let levelJson;
 let loots = [];
 let lootImage;
 let currentLevel;
+let exit;
 
 //boundary setup
 let boundaries = [];
@@ -127,6 +128,9 @@ function nextLevel() {
         loots[i] = new loot(levelJson.level[0].loot["loot" + (i+1).toString()].x, levelJson.level[0].loot["loot" + (i+1).toString()].y, lootImage);
         loots[i].sprite.addImage(lootImage);
     }
+
+    
+    
 
     //Bullets
     bullets = new Group();
