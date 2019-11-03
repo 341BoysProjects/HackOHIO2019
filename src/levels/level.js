@@ -73,7 +73,6 @@ function preload() {
 
 function setup() {
     createCanvas(width, height);
-    background(0);
     
     //Level Information
     readTextFile("src/levels/data/level1.json");
@@ -122,7 +121,7 @@ function setup() {
 }
 
 function draw() {
-    background(255);
+    background(200, 200, 200);
 
     //Draw boundaries
     for (i = 0; i < boundaries.length; i++) {
