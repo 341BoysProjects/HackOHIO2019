@@ -2,7 +2,44 @@
     "level1": [
         {
             "boundaries": {
-                
+                "x1": {
+
+                },
+                "y1": {
+
+                },
+                "x2": {
+
+                },
+                "y2": {
+
+                }
+            },
+            "doors": {
+                "location": {
+                    
+                }
+            },
+            "enemies": {
+                "x": {
+
+                },
+                "y": {
+                    
+                },
+                "difficulty": {
+                    
+                }
+            },
+            "player": {
+                "location": {
+                    
+                }
+            },
+            "loot": {
+                "location": {
+                    
+                }
             }
         }
     ]

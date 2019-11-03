@@ -11,6 +11,10 @@ let player;
 let pX = 100;
 let pY = 100;
 let pSpeed = 5;
+let pAngle = 0.0;
+
+//Bullets
+let bullets;
 
 function setup() {
     createCanvas(width, height);
@@ -24,8 +28,9 @@ function setup() {
 
     //Player
     player = createSprite(pX, pY, 50, 50);
-    player.position.x = pX;
-    player.position.y = pY;
+
+    //Bullets
+    bullets = new Group();
 }
 
 function draw() {
@@ -35,9 +40,22 @@ function draw() {
         boundaries[i].draw();
     }
 
-    move();
+    // enemies.overlap(bullets, enemyHit);
 
+    move();
+    pAngle = atan2(mouseY - player.position.y, mouseX - player.position.x);
+    player.rotation = pAngle * 180 / Math.PI;
     drawSprite(player);
+
+    if (mouseIsPressed) {
+        var bullet = createSprite(player.position.x, player.position.y, 30, 30);
+        bullet.setSpeed(10+player.getSpeed(), player.rotation);
+        bullet.life = 30;
+        bullets.add(bullet);
+    } else {
+
+    }
+    drawSprites(bullets);
 }
 
 function move() {
@@ -54,10 +72,21 @@ function move() {
         player.velocity.x = pSpeed;
     } else {
         player.velocity.x = 0;
-    }
-    
-    
+    }    
 }
+
+function enemyHit(enemy, bullet) {  
+    for(var i=0; i<10; i++) {
+      var p = createSprite(bullet.position.x, bullet.position.y);
+      p.addImage(particles);
+      p.setSpeed(random(3, 5), random(360));
+      p.friction = 0.95;
+      p.life = 15;
+    }
+  
+    bullet.remove();
+    enemy.remove();
+  }
 
 class boundary{
     constructor(x1, y1, x2, y2){
