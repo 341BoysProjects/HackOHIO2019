@@ -143,12 +143,18 @@ function draw() {
 
     //Check bullet collisions w player
     player.overlap(eBullets, playerHit);
-    player_sprite.changeAnimation('walk');
+    
 
     //Movement of Player
     move();
     pAngle = atan2(mouseY - player.position.y, mouseX - player.position.x);
     player.rotation = pAngle * 180 / Math.PI;
+
+    if (player.velocity.y > 0 || player.velocity.x > 0) {
+        player_sprite.changeAnimation('walk');
+    } else {
+        player_sprite.changeAnimation('stand');
+    }
 
     drawSprite(player);
     drawSprites(bullets);
