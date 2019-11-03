@@ -82,7 +82,7 @@ function setup() {
 
     //Enemies
     for (i = 0; i < Object.keys(levelJson.level[0].enemies.x).length; i++) {
-        enemies[i] = new enemy(levelJson.level[0].enemies.x[(i).toString()], levelJson.level[0].enemies.y[(i).toString()], 1);
+        enemies[i] = new enemy(levelJson.level[0].enemies.x[(i).toString()], levelJson.level[0].enemies.y[(i).toString()], levelJson.level[0].enemies.difficulty[(i).toString()]);
     }
 
     //Bullets
@@ -232,7 +232,7 @@ class enemy {
     
             if (this.time % 120 == 0) {
                 let eBullet = createSprite(this.x, this.y, 10, 10);
-                eBullet.setSpeed(10, this.sprite.rotation);
+                eBullet.setSpeed(10 * this.diff, this.sprite.rotation);
                 eBullet.life = 150;
                 eBullets.add(eBullet);
             }
