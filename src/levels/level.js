@@ -129,8 +129,9 @@ function nextLevel() {
         loots[i].sprite.addImage(lootImage);
     }
 
-    
-    
+    exit = createSprite(1600, 600, 15, 50);
+    exit.shapeColor = color(0);
+    exit.draw();
 
     //Bullets
     bullets = new Group();
