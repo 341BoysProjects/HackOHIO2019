@@ -79,7 +79,7 @@ function setup() {
     if (currentLevel === null) {
         currentLevel = '1';
     }
-    
+    readTextFile("src/levels/data/level" + currentLevel + ".json");
     nextLevel();
 }
 
