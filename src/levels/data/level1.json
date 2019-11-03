@@ -103,7 +103,7 @@
                 "loot1": {
                     "x": 700,
                     "y": 100,
-                    "image": "silverGun.png"
+                    "image": "src/assets/weapons/bananaGun.png"
                 }
             }
         }

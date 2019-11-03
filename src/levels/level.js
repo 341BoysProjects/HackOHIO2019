@@ -5,6 +5,7 @@ let height = innerHeight/1.3;
 //Level Setup
 let levelJson;
 let loots = [];
+let lootImage;
 
 //boundary setup
 let boundaries = [];
@@ -86,9 +87,11 @@ function setup() {
         enemies[i] = new enemy(levelJson.level[0].enemies.x[(i).toString()], levelJson.level[0].enemies.y[(i).toString()], levelJson.level[0].enemies.difficulty[(i).toString()]);
     }
 
-    //Loot
+    //Loot Setup
     for (i = 0; i < Object.keys(levelJson.level[0].loot).length; i++) {
-        loots[i] = new loot(levelJson.level[0].loot["loot" + (i+1).toString()].x, levelJson.level[0].loot["loot" + (i+1).toString()].y, levelJson.level[0].loot["loot" + (i+1).toString()].image);
+        lootImage = loadImage(levelJson.level[0].loot["loot" + (i+1).toString()].image);
+        loots[i] = new loot(levelJson.level[0].loot["loot" + (i+1).toString()].x, levelJson.level[0].loot["loot" + (i+1).toString()].y, lootImage);
+        loots[i].sprite.addImage(lootImage);
     }
 
     //Bullets
@@ -270,10 +273,6 @@ class loot {
 
     draw() {
         drawSprite(this.sprite);
-
-        // let loot = createSprite(this.x, this.y, 40, 40);
-        // // loot.life = 400;
-        // loots.add(loot);
     }
 
     // //Event for when player captures the loot
