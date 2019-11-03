@@ -73,12 +73,12 @@ function setup() {
     boundaries[3] = new boundary(0, height, 0, 0);
 
     // //Inside lines 
-    // for (i = 3; i < levelJson.level[0].boundaries.x1.length; i++) {
-    //     boundaries[i] = new boundary(levelJson.level[0].boundaries.x1[(i-4).toString()], levelJson.level[0].boundaries.y1[(i-4).toString()], levelJson.level[0].boundaries.x2[(i-4).toString()], levelJson.level[0].boundaries.y2[(i-4).toString()]);
-    // }
+    for (i = 0; i < Object.keys(levelJson.level[0].boundaries.x1).length; i++) {
+        boundaries[i+4] = new boundary(levelJson.level[0].boundaries.x1[(i).toString()], levelJson.level[0].boundaries.y1[(i).toString()], levelJson.level[0].boundaries.x2[(i).toString()], levelJson.level[0].boundaries.y2[(i).toString()]);
+    }
     
-    boundaries[4] = new boundary(width/2, height*2/3, width/2, height);
-    boundaries[5] = new boundary(width*2/3, height/3, width*2/3, height*2/3);
+    // boundaries[4] = new boundary(width/2, height*2/3, width/2, height);
+    // boundaries[5] = new boundary(width*2/3, height/3, width*2/3, height*2/3);
 
     //Player
     player = createSprite(pX, pY, pSize, pSize);
