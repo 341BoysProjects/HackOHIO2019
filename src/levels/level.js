@@ -140,6 +140,11 @@ function draw() {
         player.collide(loots[i].sprite);
         loots[i].sprite.shapeColor = color(100, 100, 100);
         loots[i].draw();
+
+        let hit1 = loots[i].sprite.overlap(bullets, lootHit);
+        let hit2 = loots[i].sprite.overlap(eBullets, lootHitE);
+        
+        
     }
 
     //Check bullet collisions w player
@@ -200,6 +205,14 @@ function playerHit(player, eBullet) {
 }
 
 function enemyHit(enemy, bullet) {  
+    bullet.remove();
+}
+
+function lootHit(loot, bullet) {
+    bullet.remove();
+}
+
+function lootHitE(loot, eBullet) {
     bullet.remove();
 }
 
