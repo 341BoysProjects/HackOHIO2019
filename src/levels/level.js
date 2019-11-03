@@ -81,9 +81,9 @@ function setup() {
     player = createSprite(pX, pY, pSize, pSize);
 
     //Enemies
-    // enemies[0] = new enemy(200, 200, 1);
-    // enemies[1] = new enemy(300, 200, 1);
-    // enemies[2] = new enemy(400, 200, 1);
+    for (i = 0; i < Object.keys(levelJson.level[0].enemies.x).length; i++) {
+        enemies[i] = new enemy(levelJson.level[0].enemies.x[(i).toString()], levelJson.level[0].enemies.y[(i).toString()], 1);
+    }
 
     //Bullets
     bullets = new Group();
