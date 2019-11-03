@@ -20,7 +20,7 @@ let pAngle = 0.0;
 let pSize = 35;
 let pHealth = 100;
 let pSpriteSheet;
-let pWalk;
+let player_walk;
 let pFrames = [
     {'name':'player_walk01', 'frame':{'x':0, 'y': 0, 'width': 150, 'height': 150}},
     {'name':'player_walk02', 'frame':{'x':151, 'y': 0, 'width': 150, 'height': 150}},
@@ -70,11 +70,6 @@ function booleanizeObject(obj) {
     });
 }
 
-function preload() {
-    pSpriteSheet = loadSpriteSheet('src/assets/characters/Player/walkingBanana.png', pFrames);
-    pWalk = loadAnimation(pSpriteSheet);
-}
-
 function setup() {
     createCanvas(width, height);
     background(255);
@@ -97,8 +92,10 @@ function setup() {
     }
 
     //Player
+    pSpriteSheet = loadSpriteSheet('src/assets/characters/Player/walkingBanana.png', pFrames);
+    player_walk = loadAnimation(pSpriteSheet);
     player = createSprite(pX, pY, pSize, pSize);
-    player.addAnimation('walk', pWalk);
+    player.addAnimation('walk', player_walk);
 
 
     //Enemies
