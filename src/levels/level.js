@@ -151,9 +151,9 @@ function draw() {
     player.rotation = pAngle * 180 / Math.PI;
 
     if (player.velocity.y > 0 || player.velocity.x > 0) {
-        player_sprite.changeAnimation('walk');
+        player.changeAnimation('walk');
     } else {
-        player_sprite.changeAnimation('stand');
+        player.changeAnimation('stand');
     }
 
     drawSprite(player);
