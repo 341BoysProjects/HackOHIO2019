@@ -186,6 +186,7 @@ function move() {
         player.changeAnimation('walk');
     } else {
         player.velocity.y = 0;
+        player.changeAnimation('stand');
     }
     if (keyIsDown(65)) { //A
         player.velocity.x = -1 * pSpeed;
@@ -195,6 +196,7 @@ function move() {
         player.changeAnimation('walk');
     } else {
         player.velocity.x = 0;
+        player.changeAnimation('stand');
     }    
 }
 
