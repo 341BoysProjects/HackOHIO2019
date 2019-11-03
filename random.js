@@ -58,5 +58,5 @@ function createMap() {
         maxTunnels--; // we created a whole tunnel so lets decrement how many we have left to create
       }
     }
-    console.log(map); // all our tunnels have been created and our map is complete, so lets return it to our render()
+   return map; // all our tunnels have been created and our map is complete, so lets return it to our render()
 };
