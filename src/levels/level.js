@@ -31,7 +31,7 @@ let enemies = [];
 let eBullets;
 
 //Sound setup
-let loseSound;
+let loseSong;
 
 function readTextFile(file) {
     var rawFile = new XMLHttpRequest();
@@ -295,7 +295,7 @@ class enemy {
             }
             this.time++;
         } else {
-            loseSound.play();
+            loseSong.play();
         }
     }
 
