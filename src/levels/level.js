@@ -90,7 +90,7 @@ function nextLevel() {
     }
 
 
-    booleanizeObject(levelJson);     
+    // booleanizeObject(levelJson);     
     pX = levelJson.level[0].player.location.x;
     pY = levelJson.level[0].player.location.y; 
 
