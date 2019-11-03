@@ -12,12 +12,13 @@ let pX = 100;
 let pY = 100;
 let pSpeed = 2;
 let pAngle = 0.0;
+let pSize = 35;
 
 //Bullets
 let bullets;
 
 //Enemies
-let enemies;
+let enemies = [];
 
 function setup() {
     createCanvas(width, height);
@@ -35,38 +36,50 @@ function setup() {
     boundaries[6] = new boundary(width*2/3, height/3, width*2/3, height*2/3);
 
     //Player
-    player = createSprite(pX, pY, 35, 35);
+    player = createSprite(pX, pY, pSize, pSize);
+
+    //Enemies
+    enemies[0] = new enemy(200, 200, 1);
+    enemies[1] = new enemy(300, 200, 1);
+    enemies[2] = new enemy(400, 200, 1);
 
     //Bullets
     bullets = new Group();
 
-    //Enemies
-    enemies = new Group();
 }
 
 function draw() {
     background(255);
+
+    //Draw boundaries
     for (i = 0; i < boundaries.length; i++) {
         player.collide(boundaries[i].sprite);
         boundaries[i].sprite.shapeColor = color(0);
-        boundaries[i].sprite.debug = true;
         boundaries[i].draw();
+        boundaries[i].sprite.overlap(bullets, boundaryHit);
     }
 
-    enemies.overlap(bullets, enemyHit);
-    player.debug = true;
+    //Draw enemies
+    for (i = 0; i < enemies.length; i++) {
+        player.collide(enemies[i].sprite);
+        enemies[i].draw();
+        let hit = enemies[i].sprite.overlap(bullets, enemyHit);
+        if (hit) {
+            enemies[i].hit();
+        }
+    }
+
     move();
     pAngle = atan2(mouseY - player.position.y, mouseX - player.position.x);
     player.rotation = pAngle * 180 / Math.PI;
     drawSprite(player);
-
     drawSprites(bullets);
 }
 
 function mouseClicked() {
     var bullet = createSprite(player.position.x, player.position.y, 10, 10);
-    bullet.setSpeed(10 + player.getSpeed(), player.rotation);
-    bullet.life = 30;
+    bullet.setSpeed(20 + player.getSpeed(), player.rotation);
+    bullet.life = 150;
     bullets.add(bullet);
 }
 
@@ -87,21 +100,16 @@ function move() {
     }    
 }
 
-function enemyHit(enemy, bullet) {  
-    for(var i=0; i<10; i++) {
-      var p = createSprite(bullet.position.x, bullet.position.y);
-      p.addImage(particles);
-      p.setSpeed(random(3, 5), random(360));
-      p.friction = 0.95;
-      p.life = 15;
-    }
-  
+function boundaryHit(boundary, bullet) {
     bullet.remove();
-    enemy.remove();
-  }
+}
 
-class boundary{
-    constructor(x1, y1, x2, y2){
+function enemyHit(enemy, bullet) {  
+    bullet.remove();
+}
+
+class boundary {
+    constructor(x1, y1, x2, y2) {
 
         // Location variables
         this.x1 = x1;
@@ -141,9 +149,29 @@ class boundary{
     }
 
     draw() {
-        //line(this.x1, this.y1, this.x2, this.y2);
-        //this.sprite.visible = false;
         drawSprite(this.sprite);
     }
 
+}
+
+class enemy {
+    constructor(x, y, diff) {
+        this.x = x;
+        this.y = y;
+        this.diff = diff;
+        this.health = 100;
+
+        this.sprite = createSprite(this.x, this.y, pSize, pSize);
+    }
+
+    draw() {
+        drawSprite(this.sprite);
+    }
+
+    hit() {
+        this.health -= 10;
+        if (this.health <= 0) {
+            this.sprite.remove();
+        }
+    }
 }
