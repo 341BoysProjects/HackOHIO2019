@@ -49,19 +49,52 @@ function readTextFile(file) {
     rawFile.send(null);
 }
 
+function parseJSONString(s){
+    s = s.toLowerCase();
+    let result = 0;
+    while(s.length>0){
+        if (s.charAt(0)=='w'){
+            s.slice(5,s.length()+1);
+            result += width;
+        }else if(s.charAt(0)=='l'){
+            s.slice(6,s.length()+1);
+            result += width;
+        }else if(s.charAt(0)=='+'){
+            s.slice(1,s.length()+1);
+
+        }
+    }
+    // if(s.length>0){
+    //     if (s.charAt(0)=='w'){
+    //         s.slice(5,s.length()+1);
+    //         result = width+parseJSONString(s);
+    //     }else if(s.charAt(0)=='l'){
+    //         s.slice(6,s.length()+1);
+    //         result = length+parseJSONString(s);
+    //     }else if(s.charAt(0)=='+'){
+    //         s.slice(5,s.length()+1);
+    //         result = width;
+    //     }
+    // }
+}
+
 function booleanizeObject(obj) {
     var keys = Object.keys(obj);
     keys.forEach(function(key) {
       var value = obj[key];
       if (typeof value === 'string') {
         var lvalue = value.toLowerCase();
-        if (lvalue.includes("width")) {
-          obj[key] = width / 2;
-        } else if (lvalue.includes("height")) {
-          obj[key] = height;
+        if (lvalue.charAt(0)=='w'){
+            lvalue.slice(5,lvalue.length()+1);
+            
         }
-      } else if (typeof value === 'object') {
-        booleanizeObject(obj[key]);
+    //     if (lvalue.includes("width")) {
+    //       obj[key] = width / 2;
+    //     } else if (lvalue.includes("height")) {
+    //       obj[key] = height;
+    //     }
+    //   } else if (typeof value === 'object') {
+    //     booleanizeObject(obj[key]);
       }
     });
 }
