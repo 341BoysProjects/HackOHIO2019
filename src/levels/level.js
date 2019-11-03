@@ -182,7 +182,7 @@ function draw() {
     drawSprites(bullets);
     drawSprites(eBullets);
 
-    if (enemies.length() == 0) {
+    if (enemies.length == 0) {
         currentLevel += 1;
         nextLevel();
     }
