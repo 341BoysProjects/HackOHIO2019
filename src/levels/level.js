@@ -1,6 +1,6 @@
 //canvas setup
-let width = innerWidth/2;
-let height = innerHeight/2;
+let width = innerWidth/1.3;
+let height = innerHeight/1.3;
 
 //boundary setup
 let boundaries = [];
@@ -10,11 +10,14 @@ let boundaryWidth = 20;
 let player;
 let pX = 100;
 let pY = 100;
-let pSpeed = 5;
+let pSpeed = 2;
 let pAngle = 0.0;
 
 //Bullets
 let bullets;
+
+//Enemies
+let enemies;
 
 function setup() {
     createCanvas(width, height);
@@ -26,36 +29,45 @@ function setup() {
     boundaries[2] = new boundary(width, height, 0, height);
     boundaries[3] = new boundary(0, height, 0, 0);
 
+    //Inside lines
+    boundaries[4] = new boundary(width/2, 0, width/2, height/3);
+    boundaries[5] = new boundary(width/2, height*2/3, width/2, height);
+    boundaries[6] = new boundary(width*2/3, height/3, width*2/3, height*2/3);
+
     //Player
-    player = createSprite(pX, pY, 50, 50);
+    player = createSprite(pX, pY, 35, 35);
 
     //Bullets
     bullets = new Group();
+
+    //Enemies
+    enemies = new Group();
 }
 
 function draw() {
     background(255);
     for (i = 0; i < boundaries.length; i++) {
         player.collide(boundaries[i].sprite);
+        boundaries[i].sprite.shapeColor = color(0);
+        boundaries[i].sprite.debug = true;
         boundaries[i].draw();
     }
 
-    // enemies.overlap(bullets, enemyHit);
-
+    enemies.overlap(bullets, enemyHit);
+    player.debug = true;
     move();
     pAngle = atan2(mouseY - player.position.y, mouseX - player.position.x);
     player.rotation = pAngle * 180 / Math.PI;
     drawSprite(player);
 
-    if (mouseIsPressed) {
-        var bullet = createSprite(player.position.x, player.position.y, 30, 30);
-        bullet.setSpeed(10+player.getSpeed(), player.rotation);
-        bullet.life = 30;
-        bullets.add(bullet);
-    } else {
-
-    }
     drawSprites(bullets);
+}
+
+function mouseClicked() {
+    var bullet = createSprite(player.position.x, player.position.y, 10, 10);
+    bullet.setSpeed(10 + player.getSpeed(), player.rotation);
+    bullet.life = 30;
+    bullets.add(bullet);
 }
 
 function move() {
@@ -90,19 +102,41 @@ function enemyHit(enemy, bullet) {
 
 class boundary{
     constructor(x1, y1, x2, y2){
+
+        // Location variables
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
-        this.isVertical = (x2-x1 == 0);
+
+
+        // Sprite var to instantiate sprite object
         this.sprite;
 
-        if (this.isVertical) {
-            this.sprite = createSprite(x1, Math.abs(y2-y1) / 2, boundaryWidth, Math.abs(y2-y1));
-        } else {
-            this.sprite = createSprite(Math.abs(x2-x1) / 2, y1, Math.abs(x2-x1), boundaryWidth);
+        // Set offsets for x and y
+        this.xOff;
+        this.yOff;
+
+        if(this.x1<this.x2){
+            this.xOff = this.x1;
+        }else{
+            this.xOff = this.x2;
         }
 
+        if(this.y1<this.y2){
+            this.yOff = this.y1;
+        }else{
+            this.yOff = this.y2;
+        }
+        
+        // If line is vertical, else if line is horizontal
+        this.isVertical = (this.x2-this.x1 == 0);
+
+        if (this.isVertical) {
+            this.sprite = createSprite(this.x1, this.yOff + (Math.abs(this.y2-this.y1) / 2), boundaryWidth, Math.abs(this.y2-this.y1));
+        } else {
+            this.sprite = createSprite(this.xOff + (Math.abs(this.x2-this.x1) / 2), this.y1, Math.abs(this.x2-this.x1), boundaryWidth);
+        }
 
     }
 
