@@ -21,6 +21,7 @@ let pSize = 35;
 let pHealth = 100;
 let pSpriteSheet;
 let player_walk;
+let player_stand;
 
 //Bullets
 let bullets;
@@ -63,6 +64,8 @@ function booleanizeObject(obj) {
 function preload() {
     pSpriteSheet = loadSpriteSheet('src/assets/characters/Player/walkingBanana.png', 150, 150, 8);
     player_walk = loadAnimation(pSpriteSheet);
+    player_stand = loadAnimation(new SpriteSheet('src/assets/characters/Player/standingBanana.png',
+    [{'name':'player_stand', 'frame':{'x':0, 'y': 0, 'width': 150, 'height': 150}}]));
 }
 
 function setup() {
@@ -89,6 +92,7 @@ function setup() {
     //Player
     player = createSprite(pX, pY, pSize, pSize);
     player.addAnimation('walk', player_walk);
+    player.addAnimation('stand', player_stand);
 
 
     //Enemies
