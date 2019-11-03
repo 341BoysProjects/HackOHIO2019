@@ -6,6 +6,7 @@ let height = innerHeight/1.3;
 let levelJson;
 let loots = [];
 let lootImage;
+let currentLevel;
 
 //boundary setup
 let boundaries = [];
@@ -73,16 +74,21 @@ function preload() {
 
 function setup() {
     createCanvas(width, height);
+
+    currentLevel = getItem('currentLevel');
+    if (currentLevel === null) {
+        currentLevel = '1';
+    }
     
     nextLevel();
 }
 
 function nextLevel() {
-    if (enemies.length == 0) {
-        
+    if (!currentLevel === null) {
+        currentLevel += 1;
+        readTextFile("src/levels/data/level" + currentLevel + ".json");
     }
-    //Level Information
-    readTextFile("src/levels/data/level2.json");
+
 
     booleanizeObject(levelJson);     
     pX = levelJson.level[0].player.location.x;
