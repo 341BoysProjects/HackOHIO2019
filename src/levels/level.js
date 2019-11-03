@@ -21,16 +21,6 @@ let pSize = 35;
 let pHealth = 100;
 let pSpriteSheet;
 let player_walk;
-let pFrames = [
-    {'name':'player_walk01', 'frame':{'x':0, 'y': 0, 'width': 150, 'height': 150}},
-    {'name':'player_walk02', 'frame':{'x':151, 'y': 0, 'width': 150, 'height': 150}},
-    {'name':'player_walk03', 'frame':{'x':302, 'y': 0, 'width': 150, 'height': 150}},
-    {'name':'player_walk04', 'frame':{'x':0, 'y': 151, 'width': 150, 'height': 150}},
-    {'name':'player_walk05', 'frame':{'x':151, 'y': 151, 'width': 150, 'height': 150}},
-    {'name':'player_walk06', 'frame':{'x':302, 'y': 151, 'width': 150, 'height': 150}},
-    {'name':'player_walk07', 'frame':{'x':0, 'y': 300, 'width': 150, 'height': 150}},
-    {'name':'player_walk08', 'frame':{'x':151, 'y': 300, 'width': 150, 'height': 150}}
-];
 
 //Bullets
 let bullets;
@@ -92,7 +82,7 @@ function setup() {
     }
 
     //Player
-    pSpriteSheet = loadSpriteSheet('src/assets/characters/Player/walkingBanana.png', pFrames);
+    pSpriteSheet = loadSpriteSheet('src/assets/characters/Player/walkingBanana.png', 150, 150, 8);
     player_walk = loadAnimation(pSpriteSheet);
     player = createSprite(pX, pY, pSize, pSize);
     player.addAnimation('walk', player_walk);
