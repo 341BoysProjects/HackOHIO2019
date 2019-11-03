@@ -62,7 +62,7 @@ function booleanizeObject(obj) {
 }
 
 function preload() {
-    pSpriteSheet = loadSpriteSheet('src/assets/characters/Player/walkingBanana.png', 150, 150, 8);
+    pSpriteSheet = loadSpriteSheet('src/assets/characters/Player/walkingBanana.png', 150, 150, 9);
     player_walk = loadAnimation(pSpriteSheet);
     player_stand = loadAnimation(new SpriteSheet('src/assets/characters/Player/standingBanana.png',
     [{'name':'player_stand', 'frame':{'x':0, 'y': 0, 'width': 150, 'height': 150}}]));
