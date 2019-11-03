@@ -111,7 +111,7 @@ function setup() {
 
     currentLevel = getItem('currentLevel');
     if (currentLevel === null) {
-        currentLevel = '1';
+        currentLevel = '2';
     }
     readTextFile("src/levels/data/level" + currentLevel + ".json");
     nextLevel();
