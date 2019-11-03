@@ -1,11 +1,10 @@
 //canvas setup
 let width = innerWidth/1.3;
 let height = innerHeight/1.3;
-console.log(width);
-console.log(height);
 
 //Level Setup
 let levelJson;
+let loots;
 
 //boundary setup
 let boundaries = [];
@@ -64,7 +63,9 @@ function setup() {
     
     readTextFile("src/levels/data/level1.json");
 
-    booleanizeObject(levelJson);      
+    booleanizeObject(levelJson);     
+    pX = levelJson.level[0].player.location.x;
+    pY = levelJson.level[0].player.location.y; 
 
     //Outside lines
     boundaries[0] = new boundary(0, 0, width, 0);
@@ -85,9 +86,17 @@ function setup() {
         enemies[i] = new enemy(levelJson.level[0].enemies.x[(i).toString()], levelJson.level[0].enemies.y[(i).toString()], levelJson.level[0].enemies.difficulty[(i).toString()]);
     }
 
+        //Loot
+        loot[0] = new loot(200, 200, "img");
+        loot[1] = new loot(500, 500, "img");
+        loot[2] = new loot(600, 600, "img");
+
     //Bullets
     bullets = new Group();
     eBullets = new Group();
+    loots = new Group();
+
+
 
 }
 
@@ -113,6 +122,14 @@ function draw() {
         }
     }
 
+    //Draw loots
+    for (i = 0; i < loots.length; i++) {
+        player.collide(loots[i].sprite);
+        loots[i].sprite.debug = true;
+        loots[i].sprite.shapeColor = color(0);
+        loots[i].draw();
+    }
+
     //Check bullet collisions w player
     player.overlap(eBullets, playerHit);
 
@@ -124,6 +141,7 @@ function draw() {
     drawSprite(player);
     drawSprites(bullets);
     drawSprites(eBullets);
+    drawSprites(loots);
 }
 
 function mouseClicked() {
@@ -245,5 +263,27 @@ class enemy {
         if (this.health <= 0) {
             this.sprite.remove();
         }
+    }
+}
+
+class loot {
+    constructor(x, y, image) {
+        this.x = x;
+        this.y = y;
+        this.image = image;
+        this.sprite = createSprite(this.x, this.y, pSize, pSize);
+    }
+
+    draw() {
+        drawSprite(this.sprite);
+
+        // let loot = createSprite(this.x, this.y, 40, 40);
+        // // loot.life = 400;
+        // loots.add(loot);
+    }
+
+    //Event for when player captures the loot
+    capture() {
+
     }
 }
