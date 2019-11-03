@@ -70,6 +70,11 @@ function booleanizeObject(obj) {
     });
 }
 
+function preload() {
+    pSpriteSheet = loadSpriteSheet('src/assets/characters/Player/walkingBanana.png', pFrames);
+    pWalk = loadAnimation(pSpriteSheet);
+}
+
 function setup() {
     createCanvas(width, height);
     background(255);
@@ -92,8 +97,6 @@ function setup() {
     }
 
     //Player
-    pSpriteSheet = loadSpriteSheet('src/assets/characters/Player/walkingBanana.png', pFrames);
-    pWalk = loadAnimation(pSpriteSheet);
     player = createSprite(pX, pY, pSize, pSize);
     player.addAnimation('walk', pWalk);
 
