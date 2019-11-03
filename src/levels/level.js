@@ -74,6 +74,10 @@ function preload() {
 function setup() {
     createCanvas(width, height);
     
+    resetLevel();
+}
+
+function resetLevel() {
     //Level Information
     readTextFile("src/levels/data/level1.json");
 
