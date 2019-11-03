@@ -13,12 +13,14 @@ let pY = 100;
 let pSpeed = 2;
 let pAngle = 0.0;
 let pSize = 35;
+let pHealth = 100;
 
 //Bullets
 let bullets;
 
 //Enemies
 let enemies = [];
+let eBullets;
 
 function setup() {
     createCanvas(width, height);
@@ -30,7 +32,7 @@ function setup() {
     boundaries[2] = new boundary(width, height, 0, height);
     boundaries[3] = new boundary(0, height, 0, 0);
 
-    //Inside lines
+    //Inside lines 
     boundaries[4] = new boundary(width/2, 0, width/2, height/3);
     boundaries[5] = new boundary(width/2, height*2/3, width/2, height);
     boundaries[6] = new boundary(width*2/3, height/3, width*2/3, height*2/3);
@@ -45,6 +47,7 @@ function setup() {
 
     //Bullets
     bullets = new Group();
+    eBullets = new Group();
 
 }
 
@@ -57,6 +60,7 @@ function draw() {
         boundaries[i].sprite.shapeColor = color(0);
         boundaries[i].draw();
         boundaries[i].sprite.overlap(bullets, boundaryHit);
+        boundaries[i].sprite.overlap(eBullets, eBoundaryHit);
     }
 
     //Draw enemies
@@ -69,11 +73,17 @@ function draw() {
         }
     }
 
+    //Check bullet collisions w player
+    player.overlap(eBullets, playerHit);
+
+    //Movement of Player
     move();
     pAngle = atan2(mouseY - player.position.y, mouseX - player.position.x);
     player.rotation = pAngle * 180 / Math.PI;
+
     drawSprite(player);
     drawSprites(bullets);
+    drawSprites(eBullets);
 }
 
 function mouseClicked() {
@@ -102,6 +112,15 @@ function move() {
 
 function boundaryHit(boundary, bullet) {
     bullet.remove();
+}
+
+function eBoundaryHit(boundary, eBullet) {
+    eBullet.remove();
+}
+
+function playerHit(player, eBullet) {
+    eBullet.remove();
+    pHealth -= 10;
 }
 
 function enemyHit(enemy, bullet) {  
@@ -160,12 +179,26 @@ class enemy {
         this.y = y;
         this.diff = diff;
         this.health = 100;
-
+        this.time = 1;
         this.sprite = createSprite(this.x, this.y, pSize, pSize);
     }
 
     draw() {
-        drawSprite(this.sprite);
+        //TODO: Remove enemies from array on death
+        if (this.health > 0) {
+            drawSprite(this.sprite);
+
+            let eAngle = atan2(player.position.y - this.y, player.position.x - this.x);
+            this.sprite.rotation = eAngle * 180 / Math.PI;
+    
+            if (this.time % 120 == 0) {
+                let eBullet = createSprite(this.x, this.y, 10, 10);
+                eBullet.setSpeed(10, this.sprite.rotation);
+                eBullet.life = 150;
+                eBullets.add(eBullet);
+            }
+            this.time++;
+        }
     }
 
     hit() {
