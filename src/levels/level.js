@@ -2,6 +2,9 @@
 let width = innerWidth/1.3;
 let height = innerHeight/1.3;
 
+//Level Setup
+let levelJson;
+
 //boundary setup
 let boundaries = [];
 let boundaryWidth = 20;
@@ -22,20 +25,60 @@ let bullets;
 let enemies = [];
 let eBullets;
 
+function readTextFile(file) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function () {
+        if (rawFile.readyState === 4) {
+            if (rawFile.status === 200 || rawFile.status == 0) {
+                var allText = rawFile.responseText;
+                levelJson = JSON.parse(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+function booleanizeObject(obj) {
+    var keys = Object.keys(obj);
+    keys.forEach(function(key) {
+      var value = obj[key];
+      if (typeof value === 'string') {
+        var lvalue = value.toLowerCase();
+        if (lvalue.includes("width")) {
+          obj[key] = width / 2;
+        } else if (lvalue.includes("height")) {
+          obj[key] = height /2;
+        }
+      } else if (typeof value === 'object') {
+        booleanizeObject(obj[key]);
+      }
+    });
+}
+
 function setup() {
     createCanvas(width, height);
     background(255);
     
+    readTextFile("src/levels/data/level1.json");
+
+    booleanizeObject(levelJson);
+    console.log(levelJson);
+      
+
     //Outside lines
     boundaries[0] = new boundary(0, 0, width, 0);
     boundaries[1] = new boundary(width, 0, width, height);
     boundaries[2] = new boundary(width, height, 0, height);
     boundaries[3] = new boundary(0, height, 0, 0);
 
-    //Inside lines 
-    boundaries[4] = new boundary(width/2, 0, width/2, height/3);
-    boundaries[5] = new boundary(width/2, height*2/3, width/2, height);
-    boundaries[6] = new boundary(width*2/3, height/3, width*2/3, height*2/3);
+    // //Inside lines 
+    // for (i = 3; i < levelJson.level[0].boundaries.x1.length; i++) {
+    //     boundaries[i] = new boundary(levelJson.level[0].boundaries.x1[(i-4).toString()], levelJson.level[0].boundaries.y1[(i-4).toString()], levelJson.level[0].boundaries.x2[(i-4).toString()], levelJson.level[0].boundaries.y2[(i-4).toString()]);
+    // }
+    
+    boundaries[4] = new boundary(width/2, height*2/3, width/2, height);
+    boundaries[5] = new boundary(width*2/3, height/3, width*2/3, height*2/3);
 
     //Player
     player = createSprite(pX, pY, pSize, pSize);
@@ -135,7 +178,6 @@ class boundary {
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
-
 
         // Sprite var to instantiate sprite object
         this.sprite;
