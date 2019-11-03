@@ -143,6 +143,7 @@ function draw() {
 
     //Check bullet collisions w player
     player.overlap(eBullets, playerHit);
+    player_sprite.changeAnimation('walk');
 
     //Movement of Player
     move();
