@@ -180,35 +180,19 @@ function mouseClicked() {
 function move() {
     if (keyIsDown(87)) { //W
         player.velocity.y = -1 * pSpeed;
-        if (player.velocity.y != 0 || player.velocity.x != 0) {
-            player.changeAnimation('walk');
-        } else {
-            player.changeAnimation('stand');
-        }
+        player.changeAnimation('walk');
     } else if (keyIsDown(83)) { //S
         player.velocity.y = pSpeed;
-        if (player.velocity.y != 0 || player.velocity.x != 0) {
-            player.changeAnimation('walk');
-        } else {
-            player.changeAnimation('stand');
-        }
+        player.changeAnimation('walk');
     } else {
         player.velocity.y = 0;
     }
     if (keyIsDown(65)) { //A
         player.velocity.x = -1 * pSpeed;
-        if (player.velocity.y != 0 || player.velocity.x != 0) {
-            player.changeAnimation('walk');
-        } else {
-            player.changeAnimation('stand');
-        }
+        player.changeAnimation('walk');
     } else if (keyIsDown(68)) { //D
         player.velocity.x = pSpeed;
-        if (player.velocity.y != 0 || player.velocity.x != 0) {
-            player.changeAnimation('walk');
-        } else {
-            player.changeAnimation('stand');
-        }
+        player.changeAnimation('walk');
     } else {
         player.velocity.x = 0;
     }    
