@@ -74,12 +74,15 @@ function preload() {
 function setup() {
     createCanvas(width, height);
     
-    resetLevel();
+    nextLevel();
 }
 
-function resetLevel() {
+function nextLevel() {
+    if (enemies.length == 0) {
+        
+    }
     //Level Information
-    readTextFile("src/levels/data/level1.json");
+    readTextFile("src/levels/data/level2.json");
 
     booleanizeObject(levelJson);     
     pX = levelJson.level[0].player.location.x;
