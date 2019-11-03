@@ -73,7 +73,7 @@ function preload() {
 
 function setup() {
     createCanvas(width, height);
-    background(255);
+    background(200);
     
     //Level Information
     readTextFile("src/levels/data/level1.json");
