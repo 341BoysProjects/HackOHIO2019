@@ -60,3 +60,45 @@ function createMap() {
     }
    return map; // all our tunnels have been created and our map is complete, so lets return it to our render()
 };
+
+
+function main() {
+  const map = createMap();
+
+  // [ dX, dY ]
+const neighborDirs = [
+  [ -1, -1 ], [  0, -1 ], [ 1, -1 ],
+  [ -1,  0 ],             [ 1,  0 ],
+  [ -1,  1 ], [  0,  1 ], [ 1,  1 ]
+];
+
+// Returns `undefined` for out-of-bound coordinates
+const getFromMatrix = m => ([x, y]) => (m[y] || [])[x];
+
+// Assumes matrix does not contain `undefined` values
+const getNeighbors = (x, y, n, m) => n
+  // From deltas to coordinates
+  .map(([dX, dY]) => [ x + dX, y + dY ])
+  // From coordinates to values
+  .map(getFromMatrix(m))
+  // Filter out-of-bounds
+  .filter(v => v !== undefined)
+
+
+// 1, 2, 0
+console.log(
+  JSON.stringify(
+    getNeighbors(0, 0, neighborDirs, map)
+  )
+);
+
+// 0, 1, 2, 2, 0, 1, 0, 2
+console.log(
+  JSON.stringify(
+    getNeighbors(3, 3, neighborDirs, map)
+  )
+);
+  
+
+
+}
