@@ -22,14 +22,14 @@ let pHealth = 100;
 let pSpriteSheet;
 let pWalk;
 let pFrames = [
-    {'name':'player_walk01', 'frame':{'x':0, 'y': 0, 'width': 70, 'height': 94}},
-    {'name':'player_walk02', 'frame':{'x':71, 'y': 0, 'width': 70, 'height': 94}},
-    {'name':'player_walk03', 'frame':{'x':142, 'y': 0, 'width': 70, 'height': 94}},
-    {'name':'player_walk04', 'frame':{'x':0, 'y': 95, 'width': 70, 'height': 94}},
-    {'name':'player_walk05', 'frame':{'x':71, 'y': 95, 'width': 70, 'height': 94}},
-    {'name':'player_walk06', 'frame':{'x':142, 'y': 95, 'width': 70, 'height': 94}},
-    {'name':'player_walk07', 'frame':{'x':213, 'y': 0, 'width': 70, 'height': 94}},
-    {'name':'player_walk08', 'frame':{'x':284, 'y': 0, 'width': 70, 'height': 94}}
+    {'name':'player_walk01', 'frame':{'x':0, 'y': 0, 'width': 150, 'height': 150}},
+    {'name':'player_walk02', 'frame':{'x':151, 'y': 0, 'width': 150, 'height': 150}},
+    {'name':'player_walk03', 'frame':{'x':302, 'y': 0, 'width': 150, 'height': 150}},
+    {'name':'player_walk04', 'frame':{'x':0, 'y': 151, 'width': 150, 'height': 150}},
+    {'name':'player_walk05', 'frame':{'x':151, 'y': 151, 'width': 150, 'height': 150}},
+    {'name':'player_walk06', 'frame':{'x':302, 'y': 151, 'width': 150, 'height': 150}},
+    {'name':'player_walk07', 'frame':{'x':453, 'y': 0, 'width': 150, 'height': 150}},
+    {'name':'player_walk08', 'frame':{'x':151, 'y': 0, 'width': 150, 'height': 150}}
 ];
 
 //Bullets
