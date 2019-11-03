@@ -1,6 +1,8 @@
 //canvas setup
 let width = innerWidth/1.3;
 let height = innerHeight/1.3;
+console.log(width);
+console.log(height);
 
 //Level Setup
 let levelJson;
@@ -48,7 +50,7 @@ function booleanizeObject(obj) {
         if (lvalue.includes("width")) {
           obj[key] = width / 2;
         } else if (lvalue.includes("height")) {
-          obj[key] = height /2;
+          obj[key] = height;
         }
       } else if (typeof value === 'object') {
         booleanizeObject(obj[key]);
@@ -62,9 +64,7 @@ function setup() {
     
     readTextFile("src/levels/data/level1.json");
 
-    booleanizeObject(levelJson);
-    console.log(levelJson);
-      
+    booleanizeObject(levelJson);      
 
     //Outside lines
     boundaries[0] = new boundary(0, 0, width, 0);
@@ -76,17 +76,14 @@ function setup() {
     for (i = 0; i < Object.keys(levelJson.level[0].boundaries.x1).length; i++) {
         boundaries[i+4] = new boundary(levelJson.level[0].boundaries.x1[(i).toString()], levelJson.level[0].boundaries.y1[(i).toString()], levelJson.level[0].boundaries.x2[(i).toString()], levelJson.level[0].boundaries.y2[(i).toString()]);
     }
-    
-    // boundaries[4] = new boundary(width/2, height*2/3, width/2, height);
-    // boundaries[5] = new boundary(width*2/3, height/3, width*2/3, height*2/3);
 
     //Player
     player = createSprite(pX, pY, pSize, pSize);
 
     //Enemies
-    enemies[0] = new enemy(200, 200, 1);
-    enemies[1] = new enemy(300, 200, 1);
-    enemies[2] = new enemy(400, 200, 1);
+    // enemies[0] = new enemy(200, 200, 1);
+    // enemies[1] = new enemy(300, 200, 1);
+    // enemies[2] = new enemy(400, 200, 1);
 
     //Bullets
     bullets = new Group();
