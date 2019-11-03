@@ -100,7 +100,7 @@ function setup() {
     for (i = 0; i < Object.keys(levelJson.level[0].enemies.x).length; i++) {
         enemyImage = loadImage("src/assets/characters/Enemies/alienStanding.png");
         enemies[i] = new enemy(levelJson.level[0].enemies.x[(i).toString()], levelJson.level[0].enemies.y[(i).toString()], levelJson.level[0].enemies.difficulty[(i).toString()]);
-        enemies[i].sprite.addImage(enemyImages);
+        enemies[i].sprite.addImage(enemyImage);
     }
 
     //Loot Setup
