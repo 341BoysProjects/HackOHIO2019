@@ -22,16 +22,6 @@ let pHealth = 100;
 let pSpriteSheet;
 let player_walk;
 let player_stand;
-var player_frames = [
-    {'name':'player_walk01', 'frame':{'x':0, 'y': 0, 'width': 150, 'height': 150}},
-    {'name':'player_walk02', 'frame':{'x':151, 'y': 0, 'width': 150, 'height': 150}},
-    {'name':'player_walk03', 'frame':{'x':302, 'y': 0, 'width': 150, 'height': 150}},
-    {'name':'player_walk04', 'frame':{'x':0, 'y': 151, 'width': 150, 'height': 150}},
-    {'name':'player_walk05', 'frame':{'x':151, 'y': 151, 'width': 150, 'height': 150}},
-    {'name':'player_walk06', 'frame':{'x':302, 'y': 151, 'width': 150, 'height': 150}},
-    {'name':'player_walk07', 'frame':{'x':0, 'y': 300, 'width': 150, 'height': 150}},
-    {'name':'player_walk08', 'frame':{'x':151, 'y': 300, 'width': 150, 'height': 150}}
-];
 
 //Bullets
 let bullets;
@@ -72,7 +62,6 @@ function booleanizeObject(obj) {
 }
 
 function preload() {
-    pSpriteSheet = loadSpriteSheet('src/assets/characters/Player/walkingBanana.png', player_frames);
     player_walk = loadAnimation(new SpriteSheet('src/assets/characters/Player/walkingBanana.gif',
         [{'name':'player_walk', 'frame':{'x':0, 'y': 0, 'width': 62, 'height': 62}}]));
     player_stand = loadAnimation(new SpriteSheet('src/assets/characters/Player/standingBanana.png',
