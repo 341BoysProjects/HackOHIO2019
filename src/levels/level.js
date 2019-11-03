@@ -157,6 +157,7 @@ function draw() {
     //Check bullet collisions w player
     player.overlap(eBullets, playerHit);
     
+noLights();
 
     //Movement of Player
     move();
