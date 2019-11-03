@@ -9,7 +9,7 @@ let lootImage;
 
 //boundary setup
 let boundaries = [];
-let boundaryWidth = 20;
+let boundaryWidth = 10;
 
 //Player setup
 let player;
