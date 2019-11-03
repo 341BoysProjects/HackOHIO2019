@@ -294,8 +294,6 @@ class enemy {
                 eBullets.add(eBullet);
             }
             this.time++;
-        } else {
-            loseSong.play();
         }
     }
 
