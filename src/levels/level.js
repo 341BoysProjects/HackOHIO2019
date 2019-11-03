@@ -101,7 +101,7 @@ function setup() {
     }
 
     //Player
-    player = createSprite(pX, pY, 150, 150);
+    player = createSprite(pX, pY, pSize, pSize);
     player.addAnimation('walk', player_walk);
     player.addAnimation('stand', player_stand);
 
